@@ -8,26 +8,9 @@ I love solving real-world problems through code and building interactive web app
 
 ---
 
-## 🚀 Projects
-
-- 🎮 [Real-Time Tic-Tac-Toe Game](https://github.com/Basudeb-Bej/Tic-Tac-Toe)
-- 🛒 [E-commerce Frontend](https://github.com/Basudeb-Bej/e-commerce-ui)
-- 📚 [Library Management System (Python + DBMS)](https://github.com/Basudeb-Bej/library-system)
-
----
-
-## 🔧 Skills
-
-- **Languages:** C, C++, Python, JavaScript
-- **Frameworks:** Node.js, Express.js
-- **Tools:** Git, GitHub, VS Code, Termux, MySQL
-
----
-
 ## 🌐 Let's Connect
 
-- ✉️ Email: basudebbej@gmail.com
-- 🔗 [GitHub](https://github.com/Basudeb-Bej)
+- ✉️ Email: basudebbej2025@gmail.com
 - 🌍 Portfolio: [basudebbej.me](https://basudebbej.me)
 
 ---
