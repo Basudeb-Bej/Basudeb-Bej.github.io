@@ -18,9 +18,9 @@ I love solving real-world problems through code and building interactive web app
 
 ## 🔧 Skills
 
-- **Languages:** HTML, CSS, JavaScript, Python, C
-- **Frameworks:** Node.js, Express.js, Bootstrap
-- **Tools:** Git, GitHub, VS Code, Termux, MongoDB, MySQL
+- **Languages:** C, C++, Python, JavaScript
+- **Frameworks:** Node.js, Express.js
+- **Tools:** Git, GitHub, VS Code, Termux, MySQL
 
 ---
 
@@ -31,5 +31,3 @@ I love solving real-world problems through code and building interactive web app
 - 🌍 Portfolio: [basudebbej.me](https://basudebbej.me)
 
 ---
-
-_“Code is like humor. When you have to explain it, it’s bad.” – Cory House_
