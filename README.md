@@ -2,7 +2,7 @@
 
 # 👋 Hi, I'm Basudeb Bej
 
-🎓 BCA Student | 💻 Aspiring Full-Stack Developer | 🧠 Lifelong Learner
+🎓 BCA Student | 💻 Aspiring Software Developer | 🧠 Lifelong Learner
 
 I love solving real-world problems through code and building interactive web applications.
 
