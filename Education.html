@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Education | Basudeb Bej</title>
+  <style>
+            :root {
+      --bg: #0f0f0f;
+      --card: #1e1e1e;
+      --text: #f0f0f0;
+      --accent: #39ff14;
+    }
+
+    * { 
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box; 
+    }
+    
+    body {
+      background: #0f0f0f;
+      color: #f0f0f0;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: var(--card);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: #00FFD4;
+    }
+
+    nav a {
+      margin-left: 1rem;
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover, nav a.active {
+      color: var(--accent);
+    }
+    
+    section {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #39ff14;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .education-item {
+      border-left: 3px solid #39ff14;
+      padding-left: 1.5rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .education-item::before {
+      content: '';
+      width: 12px;
+      height: 12px;
+      background: #39ff14;
+      border-radius: 50%;
+      position: absolute;
+      left: -8px;
+      top: 5px;
+    }
+
+    .education-item h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #ffffff;
+    }
+
+    .education-item span {
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    .education-item p {
+      margin: 0.5rem 0 0;
+      color: #ccc;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      border-top: 2px solid #333;
+      background: #1e1e1e;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Portfolio.</div>
+    <nav>
+      <a href="/index.html" class="active">Home</a>
+      <a href="/About.html">About</a>
+      <a href="#education">Education</a>
+      <a href="/Skills.html">Skills</a>
+      <a href="/Contect.html">Contact</a>
+    </nav>
+  </header>
+  
+<section>
+  <h1>Education</h1>
+
+  <div class="education-item">
+    <h3>Bachelor of Computer Applications (BCA)</h3>
+    <span>2023 – 2027 | MAKAUT University, India</span>
+    <p>Studying core subjects including programming, database systems, software engineering, and web development.</p>
+  </div>
+
+  <div class="education-item">
+    <h3>Higher Secondary (Commerce)</h3>
+    <span>2021 – 2023 | Tikrapara A.M. high School</span>
+    <p>Focused on Accountency, Business Studies, Mathemetics and Computer Science. Developed interest in coding and software development.</p>
+  </div>
+
+  <div class="education-item">
+    <h3>Secondary School</h3>
+    <span>2015 – 2021 | Tikrapara A.M. High School</span>
+    <p>Completed basic schooling with strong foundation in mathematics and logical thinking.</p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 Basudeb Bej
+</footer>
+
+</body>
+</html>
