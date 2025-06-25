@@ -9,7 +9,9 @@
 <body>
   <header>
     <div class="logo">Portfolio.</div>
-    <nav>
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+
+    <nav id="nav-menu">
       <a href="#home" class="active">Home</a>
       <a href="/About.html">About</a>
       <a href="/Education.html">Education</a>
@@ -51,5 +53,13 @@
   <footer>
     <p>&copy; 2025 Basudeb Bej</p>
   </footer>
+  
+
+  <script>
+  function toggleMenu() {
+    const nav = document.getElementById('nav-menu');
+    nav.classList.toggle('show');
+  }
+</script>
 </body>
 </html>
