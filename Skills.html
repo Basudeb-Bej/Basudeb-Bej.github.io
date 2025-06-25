@@ -129,12 +129,48 @@
     nav a.active {
       color: var(--accent);
     }
+    
+    .hamburger {
+       display: none;   
+       font-size: 1.8rem;
+       cursor: pointer; 
+       color: var(--text);
+     }
+
+  @media (max-width: 800px) {
+     .hamburger {
+        display: block;
+      }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    background: var(--card);
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+
+  nav.show {
+    display: flex;
+  }
+
+  nav a {
+    margin: 0.5rem 0;
+  }
+}
+
   </style>
 </head>
 <body>
   <header>
     <div class="logo">Portfolio. </div>
-    <nav>
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    
+    <nav id="nav-menu">
       <a href="/index.html" class="active">Home</a>
       <a href="/About.html">About</a>
       <a href="/Education.html">Education</a>
@@ -205,5 +241,11 @@
   &copy; 2025 Basudeb Bej
 </footer>
 
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById('nav-menu');
+    nav.classList.toggle('show');
+  }
+  </script>
 </body>
 </html>
