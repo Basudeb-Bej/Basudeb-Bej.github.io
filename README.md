@@ -11,6 +11,6 @@ I love solving real-world problems through code and building interactive web app
 ## 🌐 Let's Connect
 
 - ✉️ Email: basudebbej2025@gmail.com
-- 🌍 Portfolio: [basudebbej.me](https://basudebbej.me)
+- 🌍 Portfolio: [basudebbej.me](https://basudeb-bej.me)
 
 ---
