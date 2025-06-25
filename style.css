@@ -212,7 +212,7 @@
       margin-top: 4rem;
     }
 
-    @media (max-width: 800px) {
+  @media (max-width: 800px) {
       .hero {
         flex-direction: column;
         text-align: center;
@@ -228,3 +228,37 @@
         justify-content: center;
       }
     }
+    
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--text);
+}
+
+/* Mobile view */
+@media (max-width: 800px) {
+  .hamburger {
+    display: block;
+  }
+
+  nav {
+    display: none;
+    flex-direction: column;
+    background: var(--card);
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  }
+
+  nav.show {
+    display: flex;
+  }
+
+  nav a {
+    margin: 0.5rem 0;
+  }
+}
