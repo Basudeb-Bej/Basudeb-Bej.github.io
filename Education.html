@@ -4,12 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Education | Basudeb Bej</title>
+  <!-- Lottie Player Script -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <style>
-            :root {
+    :root {
       --bg: #0f0f0f;
       --card: #1e1e1e;
       --text: #f0f0f0;
       --accent: #39ff14;
+      --accent-light: #00FFD4;
     }
 
     * { 
@@ -19,8 +22,8 @@
     }
     
     body {
-      background: #0f0f0f;
-      color: #f0f0f0;
+      background: var(--bg);
+      color: var(--text);
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
@@ -35,12 +38,19 @@
       position: sticky;
       top: 0;
       z-index: 10;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.3);
     }
 
     .logo {
       font-weight: bold;
       font-size: 1.5rem;
-      color: #00FFD4;
+      color: var(--accent-light);
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+      text-shadow: 0 0 8px var(--accent-light);
     }
 
     nav a {
@@ -48,147 +58,333 @@
       color: var(--text);
       text-decoration: none;
       font-weight: 500;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
     }
 
     nav a:hover, nav a.active {
       color: var(--accent);
+    }
+
+    nav a:hover::after, nav a.active::after {
+      width: 100%;
     }
     
     section {
       padding: 2rem;
       max-width: 800px;
       margin: auto;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s forwards 0.2s;
     }
 
     h1 {
-      color: #39ff14;
+      color: var(--accent);
       font-size: 2rem;
       margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-light);
+      animation: underlineExpand 1s forwards 0.8s;
     }
 
     .education-item {
-      border-left: 3px solid #39ff14;
+      border-left: 3px solid var(--accent);
       padding-left: 1.5rem;
       margin-bottom: 2rem;
       position: relative;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: all 0.4s ease;
+    }
+
+    .education-item:nth-child(1) {
+      animation: fadeInLeft 0.6s forwards 0.4s;
+    }
+    .education-item:nth-child(2) {
+      animation: fadeInLeft 0.6s forwards 0.6s;
+    }
+    .education-item:nth-child(3) {
+      animation: fadeInLeft 0.6s forwards 0.8s;
     }
 
     .education-item::before {
       content: '';
       width: 12px;
       height: 12px;
-      background: #39ff14;
+      background: var(--accent);
       border-radius: 50%;
       position: absolute;
       left: -8px;
       top: 5px;
+      box-shadow: 0 0 10px var(--accent);
+    }
+
+    .education-item:hover {
+      transform: translateX(5px);
     }
 
     .education-item h3 {
       margin: 0;
       font-size: 1.2rem;
       color: #ffffff;
+      transition: color 0.3s ease;
+    }
+
+    .education-item:hover h3 {
+      color: var(--accent-light);
     }
 
     .education-item span {
       font-size: 0.9rem;
       color: #aaa;
+      display: inline-block;
+      transition: all 0.3s ease;
+    }
+
+    .education-item:hover span {
+      color: var(--text);
+      transform: translateX(5px);
     }
 
     .education-item p {
       margin: 0.5rem 0 0;
       color: #ccc;
+      transition: all 0.3s ease;
+    }
+
+    .education-item:hover p {
+      color: var(--text);
+      transform: translateX(5px);
     }
 
     footer {
       text-align: center;
       padding: 1rem;
       border-top: 2px solid #333;
-      background: #1e1e1e;
+      background: var(--card);
       margin-top: 2rem;
+      opacity: 0;
+      animation: fadeIn 1s forwards 1.2s;
     }
-    
-  
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes underlineExpand {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(57, 255, 20, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(57, 255, 20, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(57, 255, 20, 0); }
+    }
+
     .hamburger {
       display: none;
       font-size: 1.8rem;
       cursor: pointer;
       color: var(--text);
+      transition: transform 0.3s ease;
     }
 
-  @media (max-width: 800px) {
-     .hamburger {
-         display: block;
-     }
+    .hamburger:hover {
+      transform: rotate(90deg);
+      color: var(--accent);
+    }
 
-  nav {
-    display: none;
-    flex-direction: column;
-    background: var(--card);
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  }
+    .animation-container {
+      display: flex;
+      justify-content: center;
+      margin: 2rem 0;
+      opacity: 0;
+      animation: fadeIn 1s forwards 1s;
+    }
 
-  nav.show {
-    display: flex;
-  }
+    /* Mobile view */
+    @media (max-width: 800px) {
+      .hamburger {
+        display: block;
+      }
 
-  nav a {
-    margin: 0.5rem 0;
-  }
-}
+      nav {
+        display: none;
+        flex-direction: column;
+        background: var(--card);
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        animation: fadeIn 0.3s ease;
+      }
 
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        margin: 0.8rem 0;
+      }
+
+      section {
+        padding: 1.5rem;
+      }
+      
+      .education-item {
+        margin-bottom: 1.5rem;
+      }
+      
+      .animation-container {
+        margin: 1rem 0;
+      }
+    }
+    
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .logo-img {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #39393B;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+    }
+    
+    .logo-img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 3px #399F2E;
+    }
+    
+    .logo-container:hover {
+      text-shadow: 0 0 8px rgba(0, 255, 212, 0.5);
+    }
   </style>
 </head>
 <body>
   <header>
-    <div class="logo">Portfolio.</div>
+    <div class="logo-container">
+      <img src="/image/basudeb.jpg" class="logo-img" alt="Basudeb Bej">
+    </div>
     <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
     
     <nav id="nav-menu">
-      <a href="/index.html" class="active">Home</a>
+      <a href="/index.html">Home</a>
       <a href="/About.html">About</a>
-      <a href="#education">Education</a>
+      <a href="#education" class="active">Education</a>
       <a href="/Skills.html">Skills</a>
       <a href="/Contect.html">Contact</a>
     </nav>
   </header>
   
-<section>
-  <h1>Education</h1>
+  <section>
+    <h1>Education</h1>
 
-  <div class="education-item">
-    <h3>Bachelor of Computer Applications (BCA)</h3>
-    <span>2023 – 2027 | MAKAUT University, India</span>
-    <p>Studying core subjects including programming, database systems, software engineering, and web development.</p>
-  </div>
+    <div class="education-item">
+      <h3>Bachelor of Computer Applications (BCA)</h3>
+      <span>2023 – 2027 | MAKAUT University, India</span>
+      <p>Studying core subjects including programming, database systems, software engineering, and web development.</p>
+    </div>
 
-  <div class="education-item">
-    <h3>Higher Secondary (Commerce)</h3>
-    <span>2021 – 2023 | Tikrapara A.M. high School</span>
-    <p>Focused on Accountency, Business Studies, Mathemetics and Computer Science. Developed interest in coding and software development.</p>
-  </div>
+    <div class="education-item">
+      <h3>Higher Secondary (Commerce)</h3>
+      <span>2021 – 2023 | Tikrapara A.M. high School</span>
+      <p>Focused on Accountency, Business Studies, Mathemetics and Computer Science. Developed interest in coding and software development.</p>
+    </div>
 
-  <div class="education-item">
-    <h3>Secondary School</h3>
-    <span>2015 – 2021 | Tikrapara A.M. High School</span>
-    <p>Completed basic schooling with strong foundation in mathematics and logical thinking.</p>
-  </div>
-</section>
+    <!--div class="education-item">
+      <h3>Secondary School</h3>
+      <span>2015 – 2021 | Tikrapara A.M. High School</span>
+      <p>Completed basic schooling with strong foundation in mathematics and logical thinking.</p>
+    </div-->
+    
+    <div class="animation-container">
+      <lottie-player 
+        src="https://assets5.lottiefiles.com/packages/lf20_vybwn7df.json" 
+        background="transparent" 
+        speed="1" 
+        style="width: 300px; height: 300px;" 
+        loop 
+        autoplay>
+      </lottie-player>
+    </div>
+  </section>
 
-<footer>
-  &copy; 2025 Basudeb Bej
-</footer>
+  <footer>
+    &copy; 2025 Basudeb Bej
+  </footer>
+  
   <script>
     function toggleMenu() {
       const nav = document.getElementById('nav-menu');
       nav.classList.toggle('show');
     }
-  </script>
 
+    const educationItems = document.querySelectorAll('.education-item');
+    educationItems.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        item.style.borderLeftColor = 'var(--accent-light)';
+        item.querySelector('h3').style.color = 'var(--accent-light)';
+      });
+      item.addEventListener('mouseleave', () => {
+        item.style.borderLeftColor = 'var(--accent)';
+        item.querySelector('h3').style.color = '#ffffff';
+      });
+    });
+  </script>
 </body>
 </html>
