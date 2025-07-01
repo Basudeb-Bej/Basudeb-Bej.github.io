@@ -319,3 +319,13 @@
         max-width: 250px;
         width: 50%;
       }
+
+      .hero-image lottie-player {
+          max-width: 400px;
+          width: 100%;
+          margin: auto;
+        }
+        
+      html {
+        scroll-behavior: smooth;
+      }
