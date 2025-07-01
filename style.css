@@ -1,8 +1,9 @@
-:root {
+    :root {
       --bg: #0f0f0f;
       --card: #1e1e1e;
       --text: #f0f0f0;
       --accent: #39ff14;
+      --accent-light: #00FFD4;
     }
 
     * {
@@ -26,12 +27,32 @@
       position: sticky;
       top: 0;
       z-index: 10;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.3);
     }
 
-    .logo {
-      font-weight: bold;
-      font-size: 1.5rem;
-      color: #00FFD4;
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .logo-img {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #39393B;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+    }
+
+    .logo-img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 3px #399F2E;
+    }
+
+    .logo-container:hover {
+      text-shadow: 0 0 8px rgba(0, 255, 212, 0.5);
     }
 
     nav a {
@@ -39,10 +60,27 @@
       color: var(--text);
       text-decoration: none;
       font-weight: 500;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
     }
 
     nav a:hover, nav a.active {
       color: var(--accent);
+    }
+
+    nav a:hover::after, nav a.active::after {
+      width: 100%;
     }
 
     .hero {
@@ -53,6 +91,13 @@
       max-width: 1000px;
       margin: auto;
       flex-wrap: wrap;
+      opacity: 0;
+      animation: fadeIn 1s forwards 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     .intro {
@@ -61,82 +106,50 @@
 
     h1 {
       font-size: 2.5rem;
+      opacity: 0;
+      animation: slideInLeft 0.8s forwards 0.5s;
     }
 
     h2 {
       font-size: 1.8rem;
       color: var(--accent);
+      opacity: 0;
+      animation: slideInLeft 0.8s forwards 0.7s;
+    }
+
+    @keyframes slideInLeft {
+      from { transform: translateX(-30px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
     }
 
     p {
       margin: 1rem 0;
       line-height: 1.6;
+      opacity: 0;
+      animation: slideInLeft 0.8s forwards 0.9s;
     }
 
-    .cta-btn {
-      display: inline-block;
-      background: var(--accent);
-      color: var(--bg);
-      padding: 0.8rem 1.4rem;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      margin-top: 1rem;
+    .hero-image {
+      max-width: 400px;
+      opacity: 0;
+      animation: slideInRight 1s forwards 0.5s;
     }
 
-    .avatar-container {
-      position: relative;
-      width: 220px;
-      height: 220px;
-      margin-top: 2rem;
+    @keyframes slideInRight {
+      from { transform: translateX(30px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
     }
 
     .avatar {
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      object-fit: cover;
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      border: 3px solid #444;
-    }
-
-    .arc-rotator {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 220px;
-      height: 220px;
-      animation: rotate 4s linear infinite;
-      pointer-events: none;
-    }
-
-    .semi-arc {
       width: 100%;
-      height: 100%;
-      position: absolute;
-      border-radius: 50%;
-      box-sizing: border-box;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(57, 255, 20, 0.2);
+      transition: all 0.3s ease;
     }
 
-    .semi-arc.top {
-      border-top: 3px solid var(--accent);
-      border-left: 3px solid transparent;
-      border-right: 3px solid transparent;
-      border-bottom: 3px solid transparent;
-    }
-
-    .semi-arc.bottom {
-      border-bottom: 3px solid var(--accent);
-      border-left: 3px solid transparent;
-      border-right: 3px solid transparent;
-      border-top: 3px solid transparent;
-    }
-
-    @keyframes rotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    .avatar:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 30px rgba(57, 255, 20, 0.4);
     }
 
     .social-icons {
@@ -145,33 +158,37 @@
       justify-content: start;
       flex-wrap: wrap;
       margin-top: 1.5rem;
+      opacity: 0;
+      animation: fadeIn 1s forwards 1.1s;
     }
 
     .social-icons a {
-      background: #fff;
+      background: white;
       border-radius: 50%;
-      width: 30px;
-      height: 30px;
+      width: 40px;
+      height: 40px;
       display: flex;
       justify-content: center;
       align-items: center;
       box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s ease;
+      transition: all 0.3s ease;
+      border: 1px solid #262628;
     }
 
     .social-icons a img {
-      width: 15px;
-      height: 15px;
-      filter: grayscale(100%);
-      transition: filter 0.3s ease;
+      width: 20px;
+      height: 20px;
+      filter: grayscale(100%) brightness(1.5);
+      transition: all 0.3s ease;
     }
 
     .social-icons a:hover {
       transform: scale(1.1);
+      background: var(--accent);
     }
 
-    .social-icons a img:hover {
-      filter: grayscale(0%);
+    .social-icons a:hover img {
+      filter: grayscale(0%) brightness(1);
     }
 
     .button-group {
@@ -179,86 +196,126 @@
       justify-content: start;
       gap: 1rem;
       margin-top: 1rem;
+      opacity: 0;
+      animation: fadeIn 1s forwards 1.3s;
     }
 
     .btn {
-      padding: 0.7rem 1.2rem;
+      padding: 0.8rem 1.5rem;
       border-radius: 8px;
       font-weight: bold;
       text-decoration: none;
-      transition: 0.3s;
+      transition: all 0.3s ease;
     }
 
     .btn.hire {
-      background-color: #00d1ff;
+      background-color: var(--accent-light);
       color: #000;
+      box-shadow: 0 0 10px rgba(0, 209, 255, 0.3);
     }
 
     .btn.contact {
-      border: 2px solid #00d1ff;
-      color: #00d1ff;
+      border: 2px solid var(--accent-light);
+      color: var(--accent-light);
       background: transparent;
     }
 
     .btn:hover {
-      transform: scale(1.05);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(0, 209, 255, 0.4);
+    }
+
+    .btn.hire:hover {
+      animation: pulse 1s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: translateY(-3px) scale(1); }
+      50% { transform: translateY(-3px) scale(1.05); }
+      100% { transform: translateY(-3px) scale(1); }
     }
 
     footer {
       text-align: center;
-      padding: 1rem;
+      padding: 1.5rem;
       background: var(--card);
       border-top: 1px solid #333;
       margin-top: 4rem;
+      opacity: 0;
+      animation: fadeIn 1s forwards 1.5s;
     }
 
-  @media (max-width: 800px) {
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--text);
+      transition: transform 0.3s ease;
+    }
+
+    .hamburger:hover {
+      transform: rotate(90deg);
+      color: var(--accent);
+    }
+
+    @media (max-width: 800px) {
+      .hamburger {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        flex-direction: column;
+        background: var(--card);
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        animation: fadeIn 0.3s ease;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      nav a {
+        margin: 0.8rem 0;
+      }
+
       .hero {
         flex-direction: column;
         text-align: center;
+        padding: 2rem 1.5rem;
       }
+
       .intro {
         max-width: 100%;
       }
-      .avatar-container {
+
+      .hero-image {
         margin-top: 2rem;
+        max-width: 300px;
       }
+
       .social-icons,
       .button-group {
         justify-content: center;
       }
     }
     
-.hamburger {
-  display: none;
-  font-size: 1.8rem;
-  cursor: pointer;
-  color: var(--text);
-}
-
-/* Mobile view */
-@media (max-width: 800px) {
-  .hamburger {
-    display: block;
-  }
-
-  nav {
-    display: none;
-    flex-direction: column;
-    background: var(--card);
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  }
-
-  nav.show {
-    display: flex;
-  }
-
-  nav a {
-    margin: 0.5rem 0;
-  }
-}
+      @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+        100% { transform: translateY(0px); }
+      }
+      
+      .floating {
+        animation: float 6s ease-in-out infinite;
+      }
+      
+      .hero-image {
+        max-width: 250px;
+        width: 50%;
+      }
