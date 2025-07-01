@@ -4,11 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Home | Basudeb Bej</title>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <div class="logo">Portfolio.</div>
+    <div class="logo-container">
+      <img src="/image/basudeb.jpg" class="logo-img" alt="Basudeb Bej">
+    </div>
     <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
 
     <nav id="nav-menu">
@@ -41,25 +44,28 @@
         <a href="/Contect.html" class="btn contact">Contact Me</a>
       </div>
     </div>
-    <div class="avatar-container">
-      <div class="arc-rotator">
-        <div class="semi-arc top"></div>
-        <div class="semi-arc bottom"></div>
-      </div>
-      <img src="dcbedw.jpg" class="avatar" />
+    <div class="hero-image">
+    <lottie-player 
+        src="https://assets5.lottiefiles.com/packages/lf20_iv4dsx3q.json" 
+        background="transparent" 
+        speed="1" 
+        style="width: 100%; max-width: 400px; height: auto;" 
+        loop 
+        autoplay
+        class="floating">
+      </lottie-player>
     </div>
   </section>
 
   <footer>
     <p>&copy; 2025 Basudeb Bej</p>
   </footer>
-  
 
   <script>
-  function toggleMenu() {
-    const nav = document.getElementById('nav-menu');
-    nav.classList.toggle('show');
-  }
-</script>
+    function toggleMenu() {
+      const nav = document.getElementById('nav-menu');
+      nav.classList.toggle('show');
+    }
+  </script>
 </body>
 </html>
