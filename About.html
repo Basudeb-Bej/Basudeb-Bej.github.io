@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>About me | Basudeb Bej</title>
   <style>
-        :root {
+    :root {
       --bg: #0f0f0f;
       --card: #1e1e1e;
       --text: #f0f0f0;
       --accent: #39ff14;
+      --accent-light: #00FFD4;
     }
 
     * { 
@@ -30,20 +31,79 @@
       max-width: 800px;
       margin: 4rem auto;
       padding: 2rem;
-      background-color: #1e1e1e;
+      background-color: var(--card);
       border-radius: 12px;
       box-shadow: 0 0 20px rgba(0, 255, 100, 0.2);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s forwards 0.3s;
+    }
+    
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
     
     h1 {
-      color: #39ff14;
+      color: var(--accent);
       font-size: 2rem;
       margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-light);
+      animation: underlineExpand 1s forwards 0.8s;
+    }
+    
+    @keyframes underlineExpand {
+      from { width: 0; }
+      to { width: 100%; }
     }
     
     p {
       font-size: 1.1rem;
       line-height: 1.7;
+      opacity: 0;
+      animation: fadeIn 1s forwards 0.8s;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    strong {
+      color: var(--accent-light);
+      position: relative;
+    }
+
+    strong::before {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--accent-light);
+      transition: width 0.3s ease;
+    }
+
+    strong:hover::before {
+      width: 100%;
     }
 
     header {
@@ -55,12 +115,18 @@
       position: sticky;
       top: 0;
       z-index: 10;
+      box-shadow: 0 2px 15px rgba(0,0,0,0.3);
     }
 
     .logo {
       font-weight: bold;
       font-size: 1.5rem;
-      color: #00FFD4;
+      color: var(--accent-light);
+      transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+      text-shadow: 0 0 10px rgba(0, 255, 212, 0.5);
     }
 
     nav a {
@@ -68,81 +134,144 @@
       color: var(--text);
       text-decoration: none;
       font-weight: 500;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.3s ease;
     }
 
     nav a:hover, nav a.active {
       color: var(--accent);
     }
 
+    nav a:hover::after, nav a.active::after {
+      width: 100%;
+    }
+
     footer {
       text-align: center;
-      padding: 1rem;
+      padding: 1.5rem;
       background: var(--card);
       border-top: 1px solid #333;
       margin-top: 4rem;
+      opacity: 0;
+      animation: fadeIn 1s forwards 1.2s;
     }
 
+    .hamburger {
+      display: none;
+      font-size: 1.8rem;
+      cursor: pointer;
+      color: var(--text);
+      transition: transform 0.3s ease;
+    }
+
+    .hamburger:hover {
+      transform: rotate(90deg);
+      color: var(--accent);
+    }
+
+    /* Mobile view */
     @media (max-width: 800px) {
-      .hero {
+      .hamburger {
+        display: block;
+      }
+
+      nav {
+        display: none;
         flex-direction: column;
-        text-align: center;
+        background: var(--card);
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        animation: fadeIn 0.3s ease;
       }
-      .intro {
-        max-width: 100%;
+
+      nav.show {
+        display: flex;
       }
-      .avatar-container {
-        margin-top: 2rem;
+
+      nav a {
+        margin: 0.8rem 0;
+      }
+
+      .container {
+        margin: 2rem auto;
+        padding: 1.5rem;
       }
     }
     
-    .hamburger {
-        display: none;
-        font-size: 1.8rem;
-        cursor: pointer;
-        color: var(--text);
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .logo-img {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #39393B;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+    }
+    
+    .logo-img:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 3px #399F2E;
+    }
+    
+    .logo-container:hover {
+      text-shadow: 0 0 8px rgba(0, 255, 212, 0.5);
     }
 
-  @media (max-width: 800px) {
-     .hamburger {
-         display: block;
-     }
+    /* Animation adjustments only */
+    lottie-player {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      margin: 2rem auto 0;
+      display: block;
+    }
 
-  nav {
-    display: none;
-    flex-direction: column;
-    background: var(--card);
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    padding: 1rem;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-  }
-
-  nav.show {
-    display: flex;
-  }
-
-  nav a {
-    margin: 0.5rem 0;
-  }
-}
+    @media (max-width: 600px) {
+      lottie-player {
+        max-width: 300px;
+      }
+    }
   </style>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 </head>
 <body>
   <header>
-    <div class="logo">Portfolio. </div>
+    <div class="logo-container">
+      <img src="/image/basudeb.jpg" class="logo-img" alt="Basudeb Bej">
+    </div>
     <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
     
     <nav id="nav-menu">
-      <a href="/index.html" class="active">Home</a>
-      <a href="/About.html">About</a>
+      <a href="/index.html">Home</a>
+      <a href="/About.html" class="active">About</a>
       <a href="/Education.html">Education</a>
       <a href="/Skills.html">Skills</a>
       <a href="/Contect.html">Contact</a>
     </nav>
   </header>
-    <div class="container">
+  
+  <div class="container">
     <h1>About Me</h1>
     <p>
       I'm <strong>Basudeb Bej</strong>, a passionate <strong>Software Developer</strong> and <strong>BCA student</strong> from India. I enjoy building modern,
@@ -151,11 +280,20 @@
       I'm always learning and solving real-world problems through code. My goal is to grow as a <strong>Web developer</strong> and
       contribute to meaningful tech projects.
     </p>
+  
+    <lottie-player 
+      src="https://assets8.lottiefiles.com/packages/lf20_puciaact.json" 
+      background="transparent" 
+      speed="1"
+      loop 
+      autoplay>
+    </lottie-player>
   </div>
-
+  
   <footer>
     <p>&copy; 2025 Basudeb Bej.</p>
   </footer>
+  
   <script>
     function toggleMenu() {
       const nav = document.getElementById('nav-menu');
