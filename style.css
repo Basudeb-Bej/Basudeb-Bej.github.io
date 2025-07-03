@@ -184,7 +184,7 @@
 
     .social-icons a:hover {
       transform: scale(1.1);
-      background: var(--accent);
+      /*background: var(--accent);*/
     }
 
     .social-icons a:hover img {
