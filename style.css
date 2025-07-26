@@ -1,4 +1,4 @@
-    :root {
+   :root {
       --bg: #0f0f0f;
       --card: #1e1e1e;
       --text: #f0f0f0;
@@ -184,7 +184,7 @@
 
     .social-icons a:hover {
       transform: scale(1.1);
-      /*background: var(--accent);*/
+     /
     }
 
     .social-icons a:hover img {
@@ -263,6 +263,10 @@
         display: block;
       }
 
+      .header-right {
+        gap: 0.5rem;
+      }
+
       nav {
         display: none;
         flex-direction: column;
@@ -303,7 +307,6 @@
       .button-group {
         justify-content: center;
       }
-    }
     
       @keyframes float {
         0% { transform: translateY(0px); }
@@ -319,13 +322,92 @@
         max-width: 250px;
         width: 50%;
       }
-
+    }
+      
       .hero-image lottie-player {
           max-width: 400px;
           width: 100%;
           margin: auto;
         }
+      
+      @media (min-width: 800px) {
+        .hero-image {
+          max-width: 250px;
+          width: 100%;
+          margin: auto;
+        }
+     }
+     
         
       html {
         scroll-behavior: smooth;
+      }
+      
+      /*For light and dark mode*/
+      :root.light {
+        --bg: #ffffff;
+        --card: #f2f2f2;
+        --text: #121212;
+        --accent: #0077ff;
+        --accent-light: #0056d2;
+      }
+      
+      .header-right {           
+        display: flex;
+        align-items: center;
+        gap: 1rem; 
+        margin-left: auto;
+      }
+    
+      #theme-icon {
+        cursor: pointer;
+        z-index: 100;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+    
+      #theme-icon svg {          
+        width: 24px;
+        height: 24px;
+      }
+      
+      #theme-icon:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+    
+    /*Download theme*/
+      #download-resume {
+        cursor: pointer;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        transition: all 0.2s ease;
+      }
+      
+      #download-resume svg {      
+        width: 24px;
+        height: 24px;
+      }
+      
+      #download-resume:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+      
+      .dark #download-resume svg {    
+         color: white;
+      }
+      
+      .light #download-resume svg {     
+         color: black;
       }
