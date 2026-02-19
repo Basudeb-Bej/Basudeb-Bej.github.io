@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" type="image/png" href="dcbedw.jpg">
-  <title>Skills | Basudeb Bej</title>
+  <title>ProjSkill | Basudeb Bej</title>
   <style>
     :root {
       --bg: #0f0f0f;
@@ -388,6 +388,117 @@
       .light #download-resume svg {     
          color: black;
       }
+
+    
+    /*project section*/
+    .projects-section {
+      max-width: 1100px;
+      margin: auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 1.5rem;
+      box-shadow: 0 0 12px #000;
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    /* Animated appearance */
+    .project-card:nth-child(1) {
+      animation: projectAppear 0.8s forwards 0.4s;
+    }
+
+    .project-card:nth-child(2) {
+      animation: projectAppear 0.8s forwards 0.7s;
+    }
+
+    .project-card:nth-child(3) {
+      animation: projectAppear 0.8s forwards 1s;
+    }
+
+    .project-card:nth-child(4) {
+      animation: projectAppear 0.8s forwards 1.3s;
+    }
+
+    @keyframes projectAppear {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Hover effects */
+    .project-card:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 15px 30px rgba(57, 255, 20, 0.25);
+    }
+
+    /* Animated border glow */
+    .project-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 14px;
+      padding: 1px;
+      background: linear-gradient(20deg, transparent, transparent);
+      opacity: 1;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .project-card:hover::before {
+      opacity: 1;
+      animation: borderPulse 1.2s infinite linear;
+    }
+
+    @keyframes borderPulse {
+      0% {
+        filter: blur(3px);
+      }
+
+      50% {
+        filter: blur(6px);
+      }
+
+      100% {
+        filter: blur(3px);
+      }
+    }
+
+    .project-card h3 {
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #ccc;
+      margin-bottom: 1rem;
+    }
+
+    .project-links a {
+      text-decoration: none;
+      color: var(--accent-light);
+      margin-right: 1rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .project-links a:hover {
+      color: var(--accent);
+      text-shadow: 0 0 6px var(--accent);
+    }
   </style>
 </head>
 <body>
@@ -421,6 +532,48 @@
       <a href="Contact.html">Contact</a>
     </nav>
   </header>
+
+  <h2>Projects</h2>
+
+  <section class="projects-section">
+
+    <div class="project-card">
+      <h3>Portfolio Website</h3>
+      <p>Personal portfolio built using HTML, CSS and JavaScript showcasing skills, resume, and projects with responsive
+        design and animations.</p>
+      <div class="project-links">
+        <a href="https://basudeb-bej.me">Live Site</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3>Real-Time Tic-Tac-Toe Game</h3>
+      <p>Developed a real-time multiplayer Tic-Tac-Toe game with instant move synchronization, responsive UI, and
+        session-based gameplay.</p>
+      <div class="project-links">
+        <a href="https://real-time-tic-tac-toe-game.onrender.com/" rel="noopener noreferrer">Live Site</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3>Rock-Paper-Scissors</h3>
+      <p>Interactive game built using logic-based outcomes with scripting for quick and engaging
+        gameplay.</p>
+      <div class="project-links">
+        <a href="https://github.com/Basudeb-Bej/Rock-Paper-Scissors" rel="noopener noreferrer">GitHub Repo</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <h3>Banking System</h3>
+      <p>Banking application supporting account creation, transactions, and data handling with focus on backend logic
+        and workflow.</p>
+      <div class="project-links">
+        <a href="https://github.com/Basudeb-Bej/Banking-System" rel="noopener noreferrer">GitHub Repo</a>
+      </div>
+    </div>
+
+  </section>
   
   <h2>Technical Skills</h2>
 
