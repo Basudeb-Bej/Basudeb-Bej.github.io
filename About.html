@@ -23,12 +23,23 @@
       box-sizing: border-box; 
     }
 
-    body {
+    /* body {
       background: var(--bg);
       color: var(--text);
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', sans-serif;
+    } */
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', sans-serif;
+      line-height: 1.6;
     }
     
     .container {
@@ -399,7 +410,99 @@
     <p>&copy; 2026 Basudeb Bej — Building modern, secure, and impactful digital experiences</p>
   </footer>
   
-  <script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script>
+    /* ===== 3D STAR BACKGROUND ===== */
+    
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      2000
+    );
+    
+    const renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: true
+    });
+    
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.domElement.style.position = "fixed";
+    renderer.domElement.style.top = "0";
+    renderer.domElement.style.left = "0";
+    renderer.domElement.style.zIndex = "-1";
+    renderer.domElement.style.pointerEvents = "none";
+    
+    document.body.appendChild(renderer.domElement);
+    
+    /* Stars */
+    const starGeometry = new THREE.BufferGeometry();
+    const starCount = 5000;
+    const positions = [];
+    
+    for (let i = 0; i < starCount; i++) {
+      positions.push(
+        THREE.MathUtils.randFloatSpread(2000),
+        THREE.MathUtils.randFloatSpread(2000),
+        THREE.MathUtils.randFloatSpread(2000)
+      );
+    }
+    
+    starGeometry.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(positions, 3)
+    );
+    
+    let starMaterial = new THREE.PointsMaterial({
+      color: 0xffffff,
+      size: 1.5,
+      transparent: true,
+      opacity: 0.9,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false
+    });
+    
+    const stars = new THREE.Points(starGeometry, starMaterial);
+    scene.add(stars);
+    
+    camera.position.z = 5;
+    
+    /* Animation */
+    function animate() {
+      requestAnimationFrame(animate);
+    
+      stars.rotation.y += 0.0003;
+      stars.rotation.x += 0.0001;
+    
+      renderer.render(scene, camera);
+    }
+    
+    animate();
+    
+    /* Resize Fix */
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+    
+    /* Theme Sync */
+    const observer = new MutationObserver(() => {
+      if (document.documentElement.classList.contains("light")) {
+        starMaterial.color.set(0x222222); // darker stars in light mode
+      } else {
+        starMaterial.color.set(0xffffff); // white stars in dark mode
+      }
+    });
+    
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"]
+    });
+
+    
     function toggleMenu() {
       const nav = document.getElementById('nav-menu');
       nav.classList.toggle('show');
