@@ -21,7 +21,7 @@
     }
 
     body {
-      background: var(--bg);
+      background: transparent;
       color: var(--text);
       font-family: 'Segoe UI', sans-serif;
       line-height: 1.6;
@@ -379,41 +379,9 @@
       .light #download-resume svg {     
          color: black;
       }
-
-    .space-bg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      background: #0a0f1c;
-      overflow: hidden;
-    }
-    
-    .space-bg::after {
-      content: "";
-      position: absolute;
-      width: 200%;
-      height: 200%;
-      background-image:
-        radial-gradient(1px 1px at 20% 30%, #ffffff, transparent),
-        radial-gradient(1px 1px at 70% 60%, #ffffff, transparent),
-        radial-gradient(1px 1px at 40% 80%, #ffffff, transparent),
-        radial-gradient(1px 1px at 90% 10%, #ffffff, transparent);
-      background-repeat: repeat;
-      opacity: 0.4;
-      animation: moveStars 80s linear infinite;
-    }
-    
-    @keyframes moveStars {
-      from { transform: translateY(0); }
-      to { transform: translateY(-800px); }
-    }
   </style>
 </head>
 <body>
-  <div class="space-bg">
   <header>
     <div class="logo-container">
       <img src="dcbedw.jpg" class="logo-img" alt="Basudeb Bej">
@@ -458,48 +426,137 @@
      <p>&copy; 2026 Basudeb Bej — Building modern, secure, and impactful digital experiences</p>
   </footer>
 
-  <script>
-    function toggleMenu() {
-      const nav = document.getElementById('nav-menu');
-      nav.classList.toggle('show');
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script>
+    /* ===== 3D STAR BACKGROUND ===== */
+    
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      2000
+    );
+    
+    const renderer = new THREE.WebGLRenderer({
+      alpha: true,
+      antialias: true
+    });
+    
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.domElement.style.position = "fixed";
+    renderer.domElement.style.top = "0";
+    renderer.domElement.style.left = "0";
+    renderer.domElement.style.zIndex = "-1";
+    renderer.domElement.style.pointerEvents = "none";
+    
+    document.body.appendChild(renderer.domElement);
+    
+    /* Stars */
+    const starGeometry = new THREE.BufferGeometry();
+    const starCount = 5000;
+    const positions = [];
+    
+    for (let i = 0; i < starCount; i++) {
+      positions.push(
+        THREE.MathUtils.randFloatSpread(2000),
+        THREE.MathUtils.randFloatSpread(2000),
+        THREE.MathUtils.randFloatSpread(2000)
+      );
     }
-  
-  const themeIcon = document.getElementById('theme-icon');
-  const root = document.documentElement;
-  
-  const moonIcon = `
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
-  </svg>`;
-  
-  const sunIcon = `
-  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
-  </svg>`;
-  
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-    root.classList.add(savedTheme);
-    themeIcon.innerHTML = savedTheme === 'dark' ? moonIcon : sunIcon;
-  } else {
-    root.classList.add('light');
-    themeIcon.innerHTML = sunIcon;
-  }
-  
-  themeIcon.addEventListener('click', () => {
-    if (root.classList.contains('dark')) {
-      root.classList.remove('dark');
-      root.classList.add('light');
-      themeIcon.innerHTML = sunIcon;
-      localStorage.setItem('theme', 'light');
-    } else {
-      root.classList.remove('light');
-      root.classList.add('dark');
-      themeIcon.innerHTML = moonIcon;
-      localStorage.setItem('theme', 'dark');
+    
+    starGeometry.setAttribute(
+      "position",
+      new THREE.Float32BufferAttribute(positions, 3)
+    );
+    
+    let starMaterial = new THREE.PointsMaterial({
+      color: 0xffffff,
+      size: 1,
+      transparent: true
+    });
+    
+    const stars = new THREE.Points(starGeometry, starMaterial);
+    scene.add(stars);
+    
+    camera.position.z = 5;
+    
+    /* Animation */
+    function animate() {
+      requestAnimationFrame(animate);
+    
+      stars.rotation.y += 0.0003;
+      stars.rotation.x += 0.0001;
+    
+      renderer.render(scene, camera);
     }
-  });
-  </script>
-  </div>
+    
+    animate();
+    
+    /* Resize Fix */
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+    
+    /* Theme Sync */
+    const observer = new MutationObserver(() => {
+      if (document.documentElement.classList.contains("light")) {
+        starMaterial.color.set(0x222222); // darker stars in light mode
+      } else {
+        starMaterial.color.set(0xffffff); // white stars in dark mode
+      }
+    });
+    
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["class"]
+    });
+    
+    /* This is animation and dark and light theme */
+        
+        function toggleMenu() {
+          const nav = document.getElementById('nav-menu');
+          nav.classList.toggle('show');
+        }
+      
+      const themeIcon = document.getElementById('theme-icon');
+      const root = document.documentElement;
+      
+      const moonIcon = `
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.72 9.72 0 0 1 18 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 0 0 3 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 0 0 9.002-5.998Z" />
+      </svg>`;
+      
+      const sunIcon = `
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+      </svg>`;
+      
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        root.classList.add(savedTheme);
+        themeIcon.innerHTML = savedTheme === 'dark' ? moonIcon : sunIcon;
+      } else {
+        root.classList.add('light');
+        themeIcon.innerHTML = sunIcon;
+      }
+      
+      themeIcon.addEventListener('click', () => {
+        if (root.classList.contains('dark')) {
+          root.classList.remove('dark');
+          root.classList.add('light');
+          themeIcon.innerHTML = sunIcon;
+          localStorage.setItem('theme', 'light');
+        } else {
+          root.classList.remove('light');
+          root.classList.add('dark');
+          themeIcon.innerHTML = moonIcon;
+          localStorage.setItem('theme', 'dark');
+        }
+      });
+      </script>
 </body>
 </html>
