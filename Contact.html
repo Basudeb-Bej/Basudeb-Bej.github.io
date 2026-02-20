@@ -20,11 +20,19 @@
       box-sizing: border-box;
     }
 
-    body {
+    /* body {
       background: var(--bg);
       color: var(--text);
       font-family: 'Segoe UI', sans-serif;
       line-height: 1.6;
+    } */
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: var(--bg);
     }
 
     main {
@@ -34,6 +42,7 @@
       opacity: 0;
       transform: translateY(20px);
       animation: fadeInUp 0.8s forwards 0.3s;
+      flex: 1;
     }
 
     @keyframes fadeInUp {
