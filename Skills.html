@@ -501,9 +501,23 @@
       text-shadow: 0 0 6px var(--accent);
     }
 
-    .skill-card i {
-      color: #00ff99;
-      margin-right: 10px;
+    .skill-card ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .skill-card ul li {
+      margin: 10px 0;
+      font-size: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .skill-card ul li i {
+      color: #00ff99;   /* neon green */
+      font-size: 18px;
+      width: 22px;
     }
   </style>
 </head>
@@ -588,11 +602,12 @@
       <h3>Frontend & Backend</h3>
       <div class="bar"><div class="bar-fill" style="width: 85%;"></div></div>
       <ul>
-        <li>MERN Stack</li>
-        <li>HTML5 & CSS3</li>
-        <li>JavaScript (ES6+)</li>
-        <li>Node.js & Express.js</li>
-        <li>Socket.io</li>
+          <li><i class="fa-brands fa-react"></i> MERN Stack</li>
+          <li><i class="fa-brands fa-html5"></i> HTML5</li>
+          <li><i class="fa-brands fa-css3-alt"></i> CSS3</li>
+          <li><i class="fa-brands fa-js"></i> JavaScript (ES6+)</li>
+          <li><i class="fa-brands fa-node-js"></i> Node.js & Express.js</li>
+          <li><i class="fa-solid fa-plug"></i> Socket.io</li>
       </ul>
     </div>
 
@@ -600,10 +615,10 @@
       <h3>Programming Languages</h3>
       <div class="bar"><div class="bar-fill" style="width: 55%;"></div></div>
       <ul>
-        <li><i class="fa-brands fa-python"></i> Python</li>
-        <li>C / C++</li>
-        <li>PHP with MySQL</li>
-        <li>OOPs with Java</li>
+         <li><i class="fa-brands fa-python"></i> Python</li>
+        <li><i class="fa-solid fa-code"></i> C / C++</li>
+        <li><i class="fa-brands fa-php"></i> PHP with MySQL</li>
+        <li><i class="fa-brands fa-java"></i> OOPs with Java</li>
       </ul>
     </div>
 
@@ -611,8 +626,8 @@
       <h3>Database</h3>
       <div class="bar"><div class="bar-fill" style="width: 71%;"></div></div>
       <ul>
-        <li>MongoDB</li>
-        <li>MySQL</li>
+        <li><i class="fa-solid fa-leaf"></i> MongoDB</li>
+        <li><i class="fa-solid fa-database"></i> MySQL</li>
       </ul>
     </div>
 
@@ -620,10 +635,12 @@
       <h3>Tools & Platforms</h3>
       <div class="bar"><div class="bar-fill" style="width: 80%;"></div></div>
       <ul>
-        <li>Git & GitHub</li>
-        <li>VS Code</li>
-        <li>Canva</li>
-        <li>Linux & Termux</li>
+       <li><i class="fa-brands fa-git-alt"></i> Git</li>
+      <li><i class="fa-brands fa-github"></i> GitHub</li>
+      <li><i class="fa-solid fa-code"></i> VS Code</li>
+      <li><i class="fa-solid fa-palette"></i> Canva</li>
+      <li><i class="fa-brands fa-linux"></i> Linux</li>
+      <li><i class="fa-solid fa-terminal"></i> Termux</li>
       </ul>
     </div>
     
@@ -631,10 +648,10 @@
       <h3>Computer Science Subjects</h3>
       <div class="bar"><div class="bar-fill" style="width: 57%;"></div></div>
       <ul>
-        <li>Data Structures & Algorithms (DSA)</li>
-        <li>Computer Architecture</li>
-        <li>Operating Systems</li>
-        <li>Digital Electronics</li>
+       <li><i class="fa-solid fa-diagram-project"></i> Data Structures & Algorithms</li>
+      <li><i class="fa-solid fa-microchip"></i> Computer Architecture</li>
+      <li><i class="fa-solid fa-desktop"></i> Operating Systems</li>
+      <li><i class="fa-solid fa-bolt"></i> Digital Electronics</li>
       </ul>
     </div>
   </section>
