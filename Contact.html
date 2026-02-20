@@ -379,9 +379,41 @@
       .light #download-resume svg {     
          color: black;
       }
+
+    .space-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: #0a0f1c;
+      overflow: hidden;
+    }
+    
+    .space-bg::after {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background-image:
+        radial-gradient(1px 1px at 20% 30%, #ffffff, transparent),
+        radial-gradient(1px 1px at 70% 60%, #ffffff, transparent),
+        radial-gradient(1px 1px at 40% 80%, #ffffff, transparent),
+        radial-gradient(1px 1px at 90% 10%, #ffffff, transparent);
+      background-repeat: repeat;
+      opacity: 0.4;
+      animation: moveStars 80s linear infinite;
+    }
+    
+    @keyframes moveStars {
+      from { transform: translateY(0); }
+      to { transform: translateY(-800px); }
+    }
   </style>
 </head>
 <body>
+  <div class="space-bg">
   <header>
     <div class="logo-container">
       <img src="dcbedw.jpg" class="logo-img" alt="Basudeb Bej">
@@ -468,5 +500,6 @@
     }
   });
   </script>
+  </div>
 </body>
 </html>
