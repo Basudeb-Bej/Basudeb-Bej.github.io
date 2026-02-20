@@ -89,39 +89,75 @@
       gap: 1rem;
     }
 
-    #theme-icon, #download-resume {
-      cursor: pointer;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.5rem;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-
-    #theme-icon:hover, #download-resume:hover {
-      background: rgba(255, 255, 255, 0.2);
-      transform: scale(1.1);
-      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-    }
-
-    #theme-icon svg, #download-resume svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    .dark #download-resume svg {
-      color: white;
-    }
-
-    .light #download-resume svg {
-      color: black;
-    }
-
+     /*For light and dark mode*/
+      :root.light {
+        --bg: #ffffff;
+        --card: #f2f2f2;
+        --text: #121212;
+        --accent: #0077ff;
+        --accent-light: #0056d2;
+      }
+      
+      .header-right {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-left: auto;
+      }
+      
+      #theme-icon {
+        cursor: pointer;
+        z-index: 100;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+      
+      #theme-icon svg {
+        width: 24px;
+        height: 24px;
+      }
+      
+      #theme-icon:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+      
+      #download-resume {
+        cursor: pointer;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        transition: all 0.2s ease;
+        text-decoration: none;
+        color: inherit;
+      }
+      
+      #download-resume svg {      
+        width: 24px;
+        height: 24px;
+      }
+      
+      #download-resume:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: scale(1.1);
+      }
+      
+      .dark #download-resume svg {    
+         color: white;
+      }
+      
+      .light #download-resume svg {     
+         color: black;
+      }
     .hamburger {
       display: none;
       font-size: 1.8rem;
