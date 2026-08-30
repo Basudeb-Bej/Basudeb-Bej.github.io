@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://basudeb-bej.github.io/sitemap.xml
